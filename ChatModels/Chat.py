@@ -8,8 +8,6 @@ from langchain_groq import ChatGroq
 model = ChatGroq(model = "openai/gpt-oss-120b")
 
 
-
-
 # llm = ChatGoogleGenerativeAI(
 #     model="gemini-3.5-flash"
 # )
