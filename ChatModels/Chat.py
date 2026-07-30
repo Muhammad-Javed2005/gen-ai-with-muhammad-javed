@@ -1,11 +1,18 @@
 from dotenv import load_dotenv
-from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.chat_models import init_chat_model
+# from langchain_google_genai import ChatGoogleGenerativeAI
+# from langchain.chat_models import init_chat_model
 load_dotenv()
 
-from langchain_groq import ChatGroq
+# from langchain_groq import ChatGroq
 
-model = ChatGroq(model = "openai/gpt-oss-120b")
+
+from langchain_mistralai import ChatMistralAI
+
+
+model = ChatMistralAI(model="mistral-small-2506", temperature=0.7)
+
+
+# model = ChatGroq(model = "openai/gpt-oss-120b")
 
 
 # llm = ChatGoogleGenerativeAI(
