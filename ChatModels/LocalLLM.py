@@ -6,8 +6,11 @@ load_dotenv()
 llm = HuggingFacePipeline.from_model_id(
     model_id="TinyLlama/TinyLlama-1.1B-Chat-v1.0",
     task="text-generation",
-    max_new_tokens=512,
-    temperature=0.7,
+    pipeline_kwargs={
+        "max_new_tokens": 512,
+        "temperature": 0.7,
+        "do_sample": True,
+    },
 )
 
 chat_model = ChatHuggingFace(llm=llm)
@@ -15,5 +18,3 @@ chat_model = ChatHuggingFace(llm=llm)
 result = chat_model.invoke("What is Data Science?")
 
 print(result.content)
-
-
