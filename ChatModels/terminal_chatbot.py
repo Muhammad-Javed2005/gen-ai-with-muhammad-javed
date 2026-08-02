@@ -15,7 +15,7 @@ LLM = ChatMistralAI(
 )
 
 chat_history = []
-status = {
+stats = {
     "question" : 0 ,
     "answer" : 0 ,
 }
@@ -70,7 +70,94 @@ exit      -> Quit
 
 """)
 
+while True:
+
+    question = input(Fore.BLUE + "You : " + Style.RESET_ALL)
+
+    command = question.lower().strip()
+
+    if command == "exit":
+        print(Fore.YELLOW + " Thanks for using the AI Teacher Chatbot. Goodbye!")
+        break 
+
+    elif command == "help":
+        print(Fore.GREEN + """
+        Available Commands
+        help 
+        history 
+        stats 
+        save 
+        clear
+        exit
+        """)
+        continue
+
+    elif command == "clear":
+        chat_history.clear()
+        print(Fore.RED + "Chat history cleared.")
+        continue
+
+    elif command == "history" :
+
+        if not chat_history:
+            print(Fore.YELLOW + "No previous chat history.")
+            continue  
+
+        print(Fore.MAGENTA + "Conversation History:\n")
+
+        for msg in chat_history:
+
+            if isinstance(msg, HumanMessage):
+                print(Fore.GREEN + "You :", msg.content)
+
+            else:
+                print(Fore.CYAN + "AI  :", msg.content)
+
+            print()
+
+        continue
+
+    elif command == "stats":
+
+        print(Fore.YELLOW + "\nChat Statistics")
+        print("-" * 30)
+        print(f"Questions : {stats['questions']}")
+        print(f"Answers   : {stats['answers']}")
+        print(f"Messages  : {len(chat_history)}\n")
+        continue
+
+    elif command == "save":
+
+        filename = "chat_history.txt" 
+
+        with open(filename  , "w" , encoding = "uft-8") as file :
+            file.write("Chat History\n")
+            file.write("=" * 30 + "\n\n")
+
+            for msg in chat_history:
+                if isinstance(msg, HumanMessage):
+                    file.write("You : " + msg.content + "\n")
+                else:
+                    file.write("AI  : " + msg.content + "\n")
+
+        print(Fore.GREEN + f"Chat history saved to {filename}.")
+        continue
 
 
+response = chain.invoke({
+    "question" : question, 
+    "chat_history" : chat_history
+})
+
+
+print(Fore.CYAN + "\nAI:\n")
+print(Fore.WHITE + response.content)
+print()
+
+chat_history.append(HumanMessage(content=question))
+chat_history.append(AIMessage(content=response.content))
+
+stats["questions"] += 1
+stats["answers"] += 1
 
 
