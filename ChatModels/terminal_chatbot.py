@@ -130,7 +130,7 @@ while True:
 
         filename = "chat_history.txt" 
 
-        with open(filename  , "w" , encoding = "uft-8") as file :
+        with open(filename  , "w" , encoding = "utf-8") as file :
             file.write("Chat History\n")
             file.write("=" * 30 + "\n\n")
 
@@ -144,20 +144,25 @@ while True:
         continue
 
 
-response = chain.invoke({
-    "question" : question, 
-    "chat_history" : chat_history
-})
+    try:
+        response = chain.invoke(
+            {
+                "question": question,
+                "chat_history": chat_history
+            }
+        )
 
+        print(Fore.CYAN + "\nAI:\n")
+        print(Fore.WHITE + response.content)
+        print()
 
-print(Fore.CYAN + "\nAI:\n")
-print(Fore.WHITE + response.content)
-print()
+        chat_history.append(HumanMessage(content=question))
+        chat_history.append(AIMessage(content=response.content))
 
-chat_history.append(HumanMessage(content=question))
-chat_history.append(AIMessage(content=response.content))
+        stats["question"] += 1
+        stats["answer"] += 1
 
-stats["questions"] += 1
-stats["answers"] += 1
+    except Exception as e:
+        print(Fore.RED + f"\nError: {e}\n")
 
 
