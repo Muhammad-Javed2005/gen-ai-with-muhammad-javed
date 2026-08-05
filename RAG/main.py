@@ -3,6 +3,7 @@ from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate 
 from langchain_community.document_loaders import TextLoader
 
+
 load_dotenv()
 
 data = TextLoader(r"D:\gen-ai-with-muhammad-javed\RAG\Document Loader\notes.txt", encoding="utf-8")
