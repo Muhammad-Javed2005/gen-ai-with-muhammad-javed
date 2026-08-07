@@ -18,3 +18,5 @@ chat_model = ChatHuggingFace(llm=llm)
 result = chat_model.invoke("What is Data Science?")
 
 print(result.content)
+
+
