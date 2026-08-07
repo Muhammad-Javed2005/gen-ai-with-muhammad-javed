@@ -1,5 +1,8 @@
 from langchain_community.document_loaders import PyPDFLoader
-from langchain_text_splitters import TokenTextSplitter
+from langchain_text_splitters import TokenTextSplitte
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+
 
 
 
@@ -8,7 +11,9 @@ data = PyPDFLoader(r"D:\gen-ai-with-muhammad-javed\RAG\Document Loader\GRU.pdf")
 
 docs = data.load()
 
-splitter = TokenTextSplitter(chunk_size=1000, chunk_overlap=0)
+# splitter = TokenTextSplitter(chunk_size=1000, chunk_overlap=0)
+
+splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
 
 splits = splitter.split_documents(docs)
 
