@@ -1,6 +1,9 @@
 from langchain_core.documents import Document
 from langchain_chroma import Chroma
 from langchain_mistralai import MistralAIEmbeddings
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 CHROMA_PATH = "./chroma_db"
