@@ -1,4 +1,5 @@
-import os 
+import os
+
 from dotenv import load_dotenv
 
 from langchain_community.document_loaders import PyPDFLoader
@@ -7,100 +8,100 @@ from langchain_mistralai import ChatMistralAI
 
 from Chroma_dh_create import get_vector_store
 
+
+load_dotenv()
+
+
 PDF_PATH = r"D:\gen-ai-with-muhammad-javed\Vector Store\deeplearning (2).pdf"
 
 
-def load_store_pdf():
+def load_and_store_pdf():
     vector_store = get_vector_store()
 
-    # Check if PDF is already stored 
-
+    # Check if PDF is already stored
     collection = vector_store._collection
     existing_count = collection.count()
 
-
-    if existing_count > 0 :
-        print("PDF is already existing ChromaDB")
-        print(f"Existing Chunks : {existing_count}")
-
+    if existing_count > 0:
+        print("PDF already exists in ChromaDB.")
+        print(f"Existing chunks: {existing_count}")
         return vector_store
 
-    print("Loading PDF....")
-
+    print("Loading PDF...")
 
     loader = PyPDFLoader(PDF_PATH)
-    documenets = loader.Load()
+    documents = loader.load()
 
-    print(f"PDF Pages loaded : {len(documenets)}")
+    print(f"PDF pages loaded: {len(documents)}")
 
+    # Character-based chunking
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
 
-    # Character Base Chunking 
-    text_spiltter = RecursiveCharacterTextSplitter(
-        chuck_size = 100 ,
-        chunk_overlap = 200
-    ) 
+    chunks = text_splitter.split_documents(documents)
 
-    chunks = text_spiltter.split_documents(documenets)
-    print(f"Total Chunk Created : {len(chunks)}")
-    print("Creating Embedding and storing in Chroma DB...")
+    print(f"Total chunks created: {len(chunks)}")
 
+    print("Creating embeddings and storing in ChromaDB...")
 
     vector_store.add_documents(chunks)
 
-    print("PDF successfully stored in Chorma_DB")
+    print("PDF successfully stored in ChromaDB.")
 
     return vector_store
 
 
-def creat_LLM():
+def create_llm():
     llm = ChatMistralAI(
-        model = "mistral-small-2506",
-        temperature = 0.2
+        model="mistral-small-2506",
+        temperature=0.2
     )
 
-    return llm 
+    return llm
 
-def ask_question(vector_store , llm , question):
 
-    # Retrieve similar chunks from ChromaDB
+def ask_question(vector_store, llm, question):
 
-    result = vector_store.similarity_search(
-        question , 
-        k = 4 
+    results = vector_store.similarity_search_with_score(
+        question,
+        k=5
     )
 
-    if not result :
-        return "Sorry , I could not find relevent informarion in this PDF"
+    print("\n========== RETRIEVED CHUNKS ==========\n")
 
-    context = "\n\n".join(
-        document.page_content
-        for document in result
-    )
+    for i, (document, score) in enumerate(results):
+        print(f"\n--- CHUNK {i + 1} | SCORE: {score:.4f} ---")
+        print(document.page_content[:1000])
+
+    print("\n=======================================\n")
+
+    # Best matching chunk only
+    best_document = results[0][0]
+
+    context = best_document.page_content
 
     prompt = f"""
-You are a PDF-based AI assistant.
+You are a question-answering assistant.
 
-Answer the user's question ONLY using the information
-provided in the context below.
-
-If the answer is not available in the context, say:
-"Sorry, this information is not available in the PDF."
-
-Do not use your own general knowledge.
+Answer the question using ONLY the provided context.
 
 Context:
 {context}
 
-User Question:
+Question:
 {question}
 
-Answer:
+Give a direct and concise answer.
+
+If the answer cannot be found in the context, say:
+"Sorry, this information is not available in the PDF."
 """
 
     response = llm.invoke(prompt)
 
     return response.content
-
 
 
 def main():
@@ -110,9 +111,9 @@ def main():
     print("=" * 60)
 
     # PDF will be loaded only if ChromaDB is empty
-    vector_store = load_store_pdf()
+    vector_store = load_and_store_pdf()
 
-    llm = creat_LLM()
+    llm = create_llm()
 
     print("\nRAG system is ready.")
     print("Ask questions from your PDF.")
@@ -142,6 +143,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
