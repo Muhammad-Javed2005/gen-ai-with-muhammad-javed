@@ -30,7 +30,6 @@ seq2 = RunnableParallel(
 
 chain = seq1 | seq2
 
-# Invoke karte waqt 'topic' ko small 't' se pass karein
 result = chain.invoke({"topic": "Please write a code for palindrome in python"})
 
 print("=== GENERATED CODE ===")
