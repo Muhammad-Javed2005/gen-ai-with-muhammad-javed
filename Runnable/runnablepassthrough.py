@@ -19,7 +19,6 @@ explain_prompt = ChatPromptTemplate.from_messages([
     ("human", "Explain the following code in simple words:\n{code}")
 ])
 
-# Code generate karne ki sequence
 seq1 = code_prompt | model | parser
 
 # Parallel run karne ki sequence
