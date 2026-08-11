@@ -14,7 +14,6 @@ code_prompt = ChatPromptTemplate.from_messages([
     ("human", "{topic}")
 ])
 
-# 2. Code Explanation Prompt
 explain_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful assistant who explains code in simple words."),
     ("human", "Explain the following code in simple words:\n{code}")
