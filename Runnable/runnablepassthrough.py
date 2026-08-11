@@ -28,7 +28,6 @@ seq2 = RunnableParallel(
     }
 )
 
-# Dono chains ko combine kiya
 chain = seq1 | seq2
 
 # Invoke karte waqt 'topic' ko small 't' se pass karein
