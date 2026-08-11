@@ -9,7 +9,6 @@ load_dotenv()
 model = ChatMistralAI(model="mistral-small-2506")
 parser = StrOutputParser()
 
-# 1. Code Generation Prompt
 code_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful Code Generator. Return ONLY the code without markdown dynamic blocks."),
     ("human", "{topic}")
