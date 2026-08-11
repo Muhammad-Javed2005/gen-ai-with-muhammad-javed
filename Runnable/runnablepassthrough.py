@@ -21,7 +21,6 @@ explain_prompt = ChatPromptTemplate.from_messages([
 
 seq1 = code_prompt | model | parser
 
-# Parallel run karne ki sequence
 seq2 = RunnableParallel(
     {
         "code": RunnablePassthrough(),
