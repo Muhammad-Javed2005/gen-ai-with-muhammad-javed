@@ -35,7 +35,6 @@ if result.tool_call:
 
 
 # Fix so agyaah ab nextme ajao 
-# sab se bhele Embdding karo and vector BD me save hogaya ab chorma db se reticver ko search karna ha and bhir os ko and bhir call
 
 
 
