@@ -44,7 +44,6 @@ if result.tool_calls:
     tool_name = tool_call["name"]
     tool_message = tools[tool_name].invoke(tool_call)
     
-    # 2. Tool ka result messages list me add karein
     messages.append(tool_message)
     
     # 3. Phir se LLM ko dein taake wo final answer bana sake
