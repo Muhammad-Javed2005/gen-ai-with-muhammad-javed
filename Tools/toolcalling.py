@@ -5,7 +5,6 @@ from langchain.tools import tool
 from langchain_core.messages import HumanMessage
 from rich import print 
 
-# 1. Creating a tool 
 @tool
 def get_text_length(text: str) -> int:
     """Returns the number of characters in a given text"""
