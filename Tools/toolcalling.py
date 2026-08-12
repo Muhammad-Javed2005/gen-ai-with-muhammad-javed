@@ -46,7 +46,6 @@ if result.tool_calls:
     
     messages.append(tool_message)
     
-    # 3. Phir se LLM ko dein taake wo final answer bana sake
     # 3. Phir se LLM ko dein taake wo final aswer bana saka 
     final_result = llm_with_tool.invoke(messages)
     print(final_result.content)
