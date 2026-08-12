@@ -16,7 +16,6 @@ tools = {
 
 llm = ChatMistralAI(model="mistral-small-2506")
 
-# Tool binding 
 llm_with_tool = llm.bind_tools([get_text_length])
 
 messages = []
