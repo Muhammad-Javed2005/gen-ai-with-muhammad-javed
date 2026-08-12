@@ -29,7 +29,6 @@ if result.tool_call:
     tool_call = result.tool_calls[0]
     tool_call = tool_call["name"]
 
-    # tool ka result message list me add karien 
     messages.appened(tool_message)
 
     final_result = llm_with_tool.invoke(messages)
