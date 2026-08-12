@@ -34,7 +34,6 @@ if result.tool_call:
     print(final_result.content)
 
 
-# Fix so agyaah ab nextme ajao 
 
 
 
