@@ -28,7 +28,6 @@ messages.append(result)
 if result.tool_call:
     tool_call = result.tool_calls[0]
     tool_call = tool_call["name"]
-    # tool_message = tools[tool_name].invoke(tool_call)
 
     # tool ka result message list me add karien 
     messages.appened(tool_message)
