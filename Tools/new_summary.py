@@ -7,7 +7,6 @@ from langchain_mistralai import ChatMistralAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Tool initialize karein
 search_tool = TavilySearch(max_results=5)
 
 LLM = ChatMistralAI(model="mistral-small-2506")
