@@ -22,7 +22,6 @@ Summarize the following news into clear bullet points:
 
 chain = prompt | LLM | StrOutputParser()
 
-# Tool ko .invoke() se run karein
 news_result = search_tool.invoke("Latest AI news in 2026")
 
 result = chain.invoke({"news": news_result})
