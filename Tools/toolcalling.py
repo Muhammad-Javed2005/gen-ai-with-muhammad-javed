@@ -33,10 +33,6 @@ if result.tool_call:
     final_result = llm_with_tool.invoke(messages)
     print(final_result.content)
 
-
-
-
-
 # FIX: Sirf tabhi dobara invoke karein AGAR LLM ne Tool call kiya ho
 if result.tool_calls:
     # 1. Tool execution
