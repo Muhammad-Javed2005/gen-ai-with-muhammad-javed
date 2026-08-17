@@ -44,3 +44,4 @@ for i, doc in enumerate(docs, 1):
     print(doc.page_content)
     print("Metadata:", doc.metadata)
     print()
+
