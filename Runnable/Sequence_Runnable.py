@@ -21,6 +21,7 @@ model = ChatMistralAI(model = "mistral-small-2506")
 parser = StrOutputParser()
 
 
+
 chain = promt | model | parser
 
 
