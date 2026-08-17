@@ -35,6 +35,7 @@ result = chain.invoke({"topic": "Please write a code for palindrome in python"})
 print("=== GENERATED CODE ===")
 print(result["code"])
 
+
 print("\n=== EXPLANATION ===")
 print(result["explanation"])
 
