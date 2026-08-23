@@ -13,7 +13,6 @@ embeddings = MistralAIEmbeddings(
     model="mistral-embed"
 )
 
-
 vectorstore = Chroma(
     collection_name=COLLECTION_NAME,
     embedding_function=embeddings,

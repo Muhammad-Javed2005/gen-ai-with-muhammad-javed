@@ -9,7 +9,6 @@ load_dotenv()
 CHROMA_PATH = "./chroma_db"
 COLLECTION_NAME = "retriever_demo"
 
-
 embeddings = MistralAIEmbeddings(
     model="mistral-embed"
 )

@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 CHROMA_PATH = "./chroma_db"
 COLLECTION_NAME = "retriever_demo"
 
