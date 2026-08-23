@@ -20,6 +20,7 @@ vectorstore = Chroma(
 )
 
 
+
 question = "What is gradient descent?"
 
 
