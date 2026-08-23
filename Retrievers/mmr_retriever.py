@@ -37,6 +37,7 @@ question = "What is gradient descent?"
 docs = retriever.invoke(question)
 
 
+
 print("\n===== MMR RETRIEVER =====\n")
 
 for i, doc in enumerate(docs, 1):
