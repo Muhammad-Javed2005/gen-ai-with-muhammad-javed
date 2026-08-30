@@ -23,6 +23,7 @@ prompt = input("You: ")
 query = HumanMessage(prompt)
 messages.append(query)
 
+
 result = llm_with_tool.invoke(messages)
 messages.append(result)
 if result.tool_call:
