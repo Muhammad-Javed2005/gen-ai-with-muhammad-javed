@@ -27,4 +27,5 @@ chain = promt | model | parser
 
 result = chain.invoke("Machine Learning")
 
+
 print(result)
