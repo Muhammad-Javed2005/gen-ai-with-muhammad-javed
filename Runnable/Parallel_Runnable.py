@@ -9,6 +9,7 @@ from langchain_core.runnables import RunnableParallel , RunnableLambda
 
 # Components 
 
+
 model = ChatMistralAI(model = "mistral-small-2506")
 parser = StrOutputParser()
 
