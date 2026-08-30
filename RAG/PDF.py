@@ -22,4 +22,5 @@ model = ChatMistralAI(
 chain = prompt_template | model
 response = chain.invoke({"data": docs[0].page_content})
 
+
 print(response.content)
