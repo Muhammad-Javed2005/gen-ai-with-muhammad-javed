@@ -8,11 +8,13 @@ class Settings(BaseSettings):
     Automatically reads from environment variables or .env file.
     """
     # Application Config
+
     APP_NAME: str = Field(default="Enterprise GenAI Service", description="Name of the application")
     ENVIRONMENT: str = Field(default="development", description="Environment: development, staging, production")
     DEBUG: bool = Field(default=False, description="Debug mode flag")
 
     # LLM API Keys (Sensitive Data)
+    
     OPENAI_API_KEY: str = Field(..., description="OpenAI API Key")
     MISTRAL_API_KEY: str = Field(default="", description="Mistral API Key")
     
