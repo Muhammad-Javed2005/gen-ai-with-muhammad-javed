@@ -18,7 +18,7 @@ prompt_template = ChatPromptTemplate.from_messages([
 model = ChatMistralAI(
     model="mistral-small-latest"
 )
-
+ 
 chain = prompt_template | model
 response = chain.invoke({"data": docs[0].page_content})
 
