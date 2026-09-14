@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     CHROMA_PERSIST_DIRECTORY: str = Field(default="./chroma_db", description="Path to Chroma vector store")
     
     # Security Config
-    
+
     SECRET_KEY: str = Field(..., description="Secret key for JWT / Session encryption")
     MAX_TOKENS_LIMIT: int = Field(default=2000, description="Max token limit per request to prevent cost abuse")
 
@@ -33,4 +33,6 @@ class Settings(BaseSettings):
         extra = "ignore" # Ignore extra env variables safely
 
 # Singleton instance to import across the project
+
+
 settings = Settings()
