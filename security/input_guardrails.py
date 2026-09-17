@@ -31,6 +31,7 @@ class InputGuardrail:
                 return True
         return False
 
+
     def sanitize_input(self, user_input: str) -> Dict[Any, Any]:
         """
         Main guardrail pipeline: Cleans and validates user input.
