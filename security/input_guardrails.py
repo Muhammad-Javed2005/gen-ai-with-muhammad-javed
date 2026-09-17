@@ -6,6 +6,7 @@ class InputGuardrail:
     Inspects and sanitizes user inputs before sending them to the LLM 
     to prevent Prompt Injection and secure the system.
     """
+
     
     def __init__(self):
         # Dangerous patterns often used in prompt injection attacks
