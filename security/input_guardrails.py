@@ -59,5 +59,6 @@ class InputGuardrail:
             "cleaned_text": cleaned_text
         }
 
+
 # Global guardrail instance
 guardrail = InputGuardrail()
