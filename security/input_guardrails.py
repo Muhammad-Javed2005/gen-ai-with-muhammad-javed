@@ -19,6 +19,7 @@ class InputGuardrail:
             r"exec\("
         ]
 
+
     def check_prompt_injection(self, text: str) -> bool:
         """
         Checks if the input text contains malicious prompt injection patterns.
