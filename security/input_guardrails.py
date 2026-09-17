@@ -50,7 +50,6 @@ class InputGuardrail:
                 "error": "Security Alert: Malicious pattern detected in user input."
             }
 
-
         # 3. Clean trailing whitespaces or hidden control characters
         cleaned_text = user_input.strip()
 
@@ -58,7 +57,6 @@ class InputGuardrail:
             "is_safe": True,
             "cleaned_text": cleaned_text
         }
-
 
 # Global guardrail instance
 guardrail = InputGuardrail()
