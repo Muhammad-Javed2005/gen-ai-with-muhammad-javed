@@ -7,7 +7,6 @@ class InputGuardrail:
     to prevent Prompt Injection and secure the system.
     """
 
-    
     def __init__(self):
         # Dangerous patterns often used in prompt injection attacks
         self.forbidden_patterns = [
