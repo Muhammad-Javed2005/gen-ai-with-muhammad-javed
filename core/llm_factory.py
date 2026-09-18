@@ -26,6 +26,7 @@ class LLMFactory:
             max_tokens=settings.MAX_TOKENS_LIMIT
         )
 
+
     @staticmethod
     def get_mistral_llm(model_name: str = "mistral-large-latest", temperature: float = 0.2):
         """
