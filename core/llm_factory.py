@@ -2,6 +2,7 @@ from langchain_openai import ChatOpenAI
 from langchain_mistralai import ChatMistralAI
 from config.settings import settings
 
+
 class LLMFactory:
     """
     Enterprise LLM Factory: Centralized management for initializing 
