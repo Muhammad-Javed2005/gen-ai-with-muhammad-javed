@@ -17,6 +17,7 @@ class LLMFactory:
         """
         if not settings.OPENAI_API_KEY:
             raise ValueError("OpenAI API Key is missing in environment settings!")
+
             
         return ChatOpenAI(
             model=model_name,
