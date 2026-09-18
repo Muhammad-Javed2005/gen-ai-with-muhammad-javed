@@ -9,6 +9,7 @@ class LLMFactory:
     different LLM providers with built-in safety and configuration parameters.
     """
 
+
     @staticmethod
     def get_openai_llm(model_name: str = "gpt-4o-mini", temperature: float = 0.2):
         """
