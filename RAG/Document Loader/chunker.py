@@ -1,20 +1,18 @@
-from langchain_text_splitter import RecursiveCharacterTextSplitter
-from typing import List, List, list
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from typing import List
 from langchain_core.documents import Document
 
 class EnterpriseChunker:
     """
-    Enterprise-grade text chunking strategy using LangChain's RecursiveCharacterTextSplitter.
-    to preserve semantic context and avoid splitting sentence abrutly
+    Enterprise-grade text chunking strategy using RecursiveCharacterTextSplitter 
+    to preserve semantic context and avoid splitting sentences abruptly.
     """
-
-
+    
     def __init__(self, chunk_size: int = 1000, chunk_overlap: int = 200):
-        """
-        Initializes the chunker with specified chunk size and overlap.
-        """
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
+        
+        # Initialize the splitter with standard enterprise dimensions
         self.splitter = RecursiveCharacterTextSplitter(
             chunk_size=self.chunk_size,
             chunk_overlap=self.chunk_overlap,
@@ -31,7 +29,6 @@ class EnterpriseChunker:
             
         chunks = self.splitter.split_documents(documents)
         return chunks
-
 
     def split_text(self, text: str) -> List[str]:
         """
