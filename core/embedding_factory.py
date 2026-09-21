@@ -4,31 +4,29 @@ from config.settings import settings
 
 class EmbeddingFactory:
     """
-    Centralized factory to initliaze and standerdize embedding models
-    for vector Stores across the application.
+    Centralized factory to initialize and standardize embedding models 
+    for Vector Stores across the application.
     """
-
+    
     @staticmethod
-    def get_openai_embeddings(model_name : str = "text-embedding-3-small"):
+    def get_openai_embeddings(model_name: str = "text-embedding-3-small"):
         """
-        Return OpenAI embedding Model instance using validated API key.
+        Returns OpenAI embedding model instance using validated API key.
         """
-
         if not settings.OPENAI_API_KEY:
-            raise ValueError("OpenAI API key is missing in enviornment settings!")
-
+            raise ValueError("OpenAI API Key is missing for embeddings.")
+            
         return OpenAIEmbeddings(
-            model = model_name, 
-            api_key = settings.OPENAI_API_KEY
+            model=model_name,
+            api_key=settings.OPENAI_API_KEY
         )
 
     @staticmethod
-    def get_huggingface_embeddings(model_name : str = "all-MiniLM-L6-v2"):
+    def get_huggingface_embeddings(model_name: str = "all-MiniLM-L-v2"):
         """
-        Return local huggingface embedding model isntance (NO API key needed).
+        Returns local HuggingFace embedding model instance (No API key needed).
         Great for cost saving and local privacy compliance.
         """
-
         return HuggingFaceEmbeddings(
-            model_name = model_name
+            model_name=model_name
         )
