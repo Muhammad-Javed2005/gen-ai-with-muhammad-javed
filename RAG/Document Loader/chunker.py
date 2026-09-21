@@ -31,3 +31,13 @@ class EnterpriseChunker:
             
         chunks = self.splitter.split_documents(documents)
         return chunks
+
+
+    def split_text(self, text: str) -> List[str]:
+        """
+        Takes raw string text and splits it into text chunks.
+        """
+        if not text or len(text.strip()) == 0:
+            raise ValueError("Provided text is empty.")
+            
+        return self.splitter.split_text(text)
