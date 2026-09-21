@@ -1,5 +1,5 @@
 from langchain_text_splitter import RecursiveCharacterTextSplitter
-from typing import list
+from typing import List, List, list
 from langchain_core.documents import Document
 
 class EnterpriseChunker:
@@ -21,3 +21,13 @@ class EnterpriseChunker:
             length_function=len,
             separators=["\n\n", "\n", " ", ""]
         )
+
+    def split_documents(self, documents: List[Document]) -> List[Document]:
+        """
+        Takes raw loaded documents and splits them into smaller, manageable chunks.
+        """
+        if not documents:
+            raise ValueError("No documents provided for splitting.")
+            
+        chunks = self.splitter.split_documents(documents)
+        return chunks
