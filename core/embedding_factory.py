@@ -16,3 +16,10 @@ class EmbeddingFactory:
 
         if not settings.OPENAI_API_KEY:
             raise ValueError("OpenAI API key is missing in enviornment settings!")
+
+        return OpenAIEmbeddings(
+            model = model_name, 
+            api_key = settings.OPENAI_API_KEY
+        )
+
+    
