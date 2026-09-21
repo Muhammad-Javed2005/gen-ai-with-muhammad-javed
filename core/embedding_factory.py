@@ -22,4 +22,13 @@ class EmbeddingFactory:
             api_key = settings.OPENAI_API_KEY
         )
 
-    
+    @staticmethod
+    def get_huggingface_embeddings(model_name : str = "all-MiniLM-L6-v2"):
+        """
+        Return local huggingface embedding model isntance (NO API key needed).
+        Great for cost saving and local privacy compliance.
+        """
+
+        return HuggingFaceEmbeddings(
+            model_name = model_name
+        )
